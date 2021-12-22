@@ -3,16 +3,15 @@ import java.util.*;
 public class City{
 
 
-    //Determine the City Grid based on the size of the Plotter
+    //City Grid based on the size of the Plotter
     public static final int WIDTH = 80;
     public static final int HEIGHT = 80;
 
-    //Different names, same result
     public static final int MAX_COL = WIDTH;
     public static final int MAX_ROW = HEIGHT;
 
     
-    // The Grid World for your reference
+    // The Grid World for reference
     //
     //        (x)
     //        columns
@@ -30,7 +29,7 @@ public class City{
     //
 
 
-    //IMPORTANT! The grid world is a torus. Whenn a a point goes off
+    //The grid world is a torus. Whenn a a point goes off
     //an edge, it wrapps around to the other side. So with a width of
     //of 80, a point at (79,5) would move to (0,5) next if it moved
     //one space down. Similarly, with a height of 80, a point
@@ -46,15 +45,11 @@ public class City{
     
     private Queue<Creature> rmQueue; //creatures that are staged for removal
     private Queue<Creature> addQueue; //creatures taht are staged to be added    
-
-    //... YES! you must use all of these collections.
-    //... YES! you may add others if you need, but you MUST use these too!
     
 
     //Random instance
     private Random rand;
 
-    //Note, for Level 4, you may need to change this constructors arguments.
     public City(Random rand, int numMice, int numCats, int numZombieCats) {
         this.rand = rand;
         this.creatures = new LinkedList<Creature>();
@@ -86,25 +81,19 @@ public class City{
     // items from the list until after that iteration is
     // complete. Instead, we will queue (or stage) removals and
     // additions.
-    //
-    // I gave yout the two methods for adding, but you'll need to
-    // implementing the clearing.
 
-    //stage a create to be removed
+    //Stage a create to be removed
     public void queueRmCreature(Creature c){
-        //DO NOT EDIT
         rmQueue.add(c);
     }
 
     //Stage a creature to be added
     public void queueAddCreature(Creature c){
-        //DO NOT EDIT
         addQueue.add(c);
     }
     
     //Clear the queue of creatures staged for removal and addition
     public void clearQueue(){
-        //TODO
         for (Creature c : addQueue){
             creatures.add(c);
             List<Creature> sharedCreatures = new LinkedList<Creature>();
@@ -133,18 +122,12 @@ public class City{
             creatureGrid.put(cur.getGridPoint(), sharedCreatures);
         }
         this.rmQueue.clear();
-        // rmQueue = new LinkedList<Creature>();
         return;
 
         //Clear the queues by either adding creatures to the
         //simulation or removing them.
 
     }
-
-
-    //TODO -- there are a number of other member methods you'll want
-    //to write here to interact with creatures. This is a good thing
-    //to think about when putting together your UML diagram
 
     public List<Creature> getCreaturesAtLocation(GridPoint g){
         return creatureGrid.get(g);
@@ -174,17 +157,8 @@ public class City{
     
 
     // This is the simulate method that is called in Simulator.java
-    // 
-    //You need to realize in your Creature class (and decendents) this
-    //functionality so that they work properly. Read through these
-    //comments so it's clear you understand.
-    public void simulate() {
-        //DO NOT EDIT!
-        
-        //You get this one for free, but you need to review this to
-        //understand how to implement your various creatures
 
-        //First, for all creatures ...
+    public void simulate() {
         for(Creature c : creatures){
             //check to see if any creature should die
             if(c.die()){
@@ -193,8 +167,6 @@ public class City{
             }
             
             //for all remaining creatures take a step
-            //this could involve chasing another creature
-            //or running away from a creature
             c.step();
         }
 
@@ -204,7 +176,6 @@ public class City{
         
         //For every creature determine if an action should be taken
         // such as, procreating (mice), eating (cats, zombiecats), or
-        // some new action that you'll add to the system.
         for(Creature c : creatures){
             c.takeAction(); 
         }

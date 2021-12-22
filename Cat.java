@@ -23,7 +23,6 @@ public class Cat extends Creature {
     public void takeAction(){
         List<Creature> creatureList = city.getCreaturesAtLocation(getGridPoint());
         for (Creature c: creatureList){
-            System.out.println(c);
             if(c.lab == LAB_BLUE){
                 c.killedOrLived();
                 city.queueRmCreature(c);
@@ -43,7 +42,6 @@ public class Cat extends Creature {
         Creature closestCreature = null;
         int closestValue = 20;
         for (Creature c: creatureList){
-            // System.out.println(this.dist(c));
             if (this.dist(c) <= closestValue && c.lab == LAB_BLUE){
                 this.lab = LAB_CYAN;
                 closestValue = this.dist(c);
@@ -69,10 +67,8 @@ public class Cat extends Creature {
             else if(destination.col < this.getCol()){
                 west = true;
             }
-            // System.out.println("North: " + north + " East: " + east + " South: " + south + " West: " + west);
 
             if (north && !east && !west){
-                // System.out.println("Accessed North");
                 changeToDirection(0);
             }
 
@@ -86,7 +82,6 @@ public class Cat extends Creature {
             }
 
             if (east && !north && !south){
-                // System.out.println("Accessed East");
                 changeToDirection(1);
             }
 
@@ -100,12 +95,10 @@ public class Cat extends Creature {
             }
 
             if (south && !east && !west){
-                // System.out.println("Accessed South");
                 changeToDirection(2);
             }
 
             if (south && west){
-                System.out.println("Accessed Southwest");
                 if (destination.row - this.getRow() > this.getCol() - destination.col){
                     changeToDirection(2);
                 }
@@ -115,12 +108,10 @@ public class Cat extends Creature {
             }
 
             if (west && !north && !south){
-                // System.out.println("Accessed West");
                 changeToDirection(3);
             }
 
             if (west && north){
-                System.out.println("Accessed NorthWest");
                 if (this.getCol() - destination.col > this.getRow() - destination.row){
                     changeToDirection(3);
                 }

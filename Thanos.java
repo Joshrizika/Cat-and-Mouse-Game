@@ -42,7 +42,6 @@ public class Thanos extends Creature{
     public void takeAction(){
         List<Creature> creatureList = city.getCreaturesAtLocation(getGridPoint());
         for (Creature c: creatureList){
-            // System.out.println(c);
             if(c.lab == LAB_PINK || c.lab == LAB_ORANGE || c.lab == LAB_GREEN){
                 c.killedOrLived();
                 city.queueRmCreature(c);
@@ -88,7 +87,6 @@ public class Thanos extends Creature{
         Creature closestCreature = null;
         int closestValue = 160;
         for (Creature c: creatureList){
-            // System.out.println(this.dist(c));
             if (this.dist(c) <= closestValue && (c.lab == LAB_PINK || c.lab == LAB_ORANGE || c.lab == LAB_GREEN)){
                 closestValue = this.dist(c);
                 closestCreature = c;
@@ -113,10 +111,8 @@ public class Thanos extends Creature{
             else if(destination.col < this.getCol()){
                 west = true;
             }
-            // System.out.println("North: " + north + " East: " + east + " South: " + south + " West: " + west);
 
             if (north && !east && !west){
-                // System.out.println("Accessed North");
                 changeToDirection(0);
             }
 
@@ -130,7 +126,6 @@ public class Thanos extends Creature{
             }
 
             if (east && !north && !south){
-                // System.out.println("Accessed East");
                 changeToDirection(1);
             }
 
@@ -144,12 +139,10 @@ public class Thanos extends Creature{
             }
 
             if (south && !east && !west){
-                // System.out.println("Accessed South");
                 changeToDirection(2);
             }
 
             if (south && west){
-                System.out.println("Accessed Southwest");
                 if (destination.row - this.getRow() > this.getCol() - destination.col){
                     changeToDirection(2);
                 }
@@ -159,12 +152,10 @@ public class Thanos extends Creature{
             }
 
             if (west && !north && !south){
-                // System.out.println("Accessed West");
                 changeToDirection(3);
             }
 
             if (west && north){
-                // System.out.println("Accessed NorthWest");
                 if (this.getCol() - destination.col > this.getRow() - destination.row){
                     changeToDirection(3);
                 }
@@ -190,7 +181,6 @@ public class Thanos extends Creature{
         city.removeFromHashmap(this);
         
         timeAlive++;
-        // System.out.println(timeAlive);
 
         int row = this.getRow();
         int col = this.getCol();

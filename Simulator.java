@@ -1,5 +1,4 @@
 import java.util.Random;
-import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -7,7 +6,7 @@ public class Simulator {
 	
     public static void main(String[] args) {
 
-        //This is the arguments for running your program so you can test with different settings
+        
         final String USAGE = "java Simulator numMice numCats numZombieCats rounds [randSeed] [--DEBUG]";
         //note that [ ] is to indicate an optional argument. You do not include [ ] when using this argument.
         //When using the --DEBUG flag, you must set a random seed.
@@ -37,7 +36,6 @@ public class Simulator {
 
         //Initialize a city with mice, cats, and zombie cats
         City city= new City(rand,numMice,numCats,numZombieCats);
-        //Note for Level 4 you may need to change your constructors arguments.
         
         int count = 0;
 
@@ -53,17 +51,13 @@ public class Simulator {
         while (count < rounds) {
             count++;
 
-            if (count%100 == 0){
+            if (count%10 == 0){
                 city.queueAddCreature(new Mouse(rand.nextInt(City.MAX_COL), rand.nextInt(City.MAX_ROW), city, rand));
             }
 
-            if (count%25 == 0){
+            if (count%5 == 0){
                 city.queueAddCreature(new Cat(rand.nextInt(City.MAX_COL), rand.nextInt(City.MAX_ROW), city, rand));
             }
-
-            //TODO: You'll eventually need to complete functionality
-            //for adding mice and cats per round, but start small and
-            //build up.
             
             city.simulate();
 

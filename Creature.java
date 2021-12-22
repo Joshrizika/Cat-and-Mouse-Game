@@ -1,41 +1,13 @@
 import java.util.*;
 
 public abstract class Creature {
-
-    
-    // Note, that output should be in (x,y) or (column,row) format as
-    // the plotter expects it in that format. But internally, we will
-    // think of things as (row,column)
-
-
-    // When considering the direction a creature is facing, we will use indexes like so.
-    
-    // dir: 0=North, 1=East, 2=South, 3=West.
-    // 
-    //
-    //
-    //               N (r-1,c+0)
-    //               0
-    //(r+0,c-1) W 3 [ ]  1 E (r+0,c+1)
-    //               2
-    //               S (r+1,c+0)
-    //
-    //
-    // 
-    // 
-    // The following static constants could be useful for you :)    
+  
     public final static int NORTH = 0;
     public final static int EAST = 1;
     public final static int SOUTH = 2;
     public final static int WEST = 3;
     public final static int NUM_DIRS = 4;
     public final static int[] DIRS = {NORTH,EAST,SOUTH,WEST};
-
-    //Use the index of the direction to determine how to add to a row or column
-    //For example, if NORTH (index o), the we subtract 1 from row, and add 0 to column
-    //direction
-    protected final int[] dirRow = {-1,0,1,0};
-    protected final int[] dirCol = {0, 1, 0, -1};
 
     //The following are the color labels available to creatures
     public final static char LAB_BLACK='k';
@@ -50,7 +22,6 @@ public abstract class Creature {
     public final static char LAB_GRAY='e';
 
 
-    
     //current direction facing
     private int dir;
 
@@ -71,18 +42,13 @@ public abstract class Creature {
 
 
     public Creature(int r, int c, City cty, Random rnd){
-        //DEFAULT Constructor
         point = new GridPoint(r,c);
         city = cty;
         rand = rnd;
         lab = LAB_GRAY;
         dir = rand.nextInt(NUM_DIRS);
     }
-
-    //abstract methods you'll need to realize in children classes It's
-    //also possible to change these from abstract if you have good
-    //reason (e.g., inheritance) for implementing them here, but you
-    //should explain that in your UML and README file.    
+ 
     public abstract void maybeTurn(); //randomnly turn if suppose to
     public abstract void takeAction(); //take an action based on a location in the city
     public abstract boolean die(); //return true if should die, false otherwise
@@ -104,7 +70,6 @@ public abstract class Creature {
 
     public abstract void killedOrLived();
 
-    //You get these getters for free :)
     public int getRow(){
         return point.row;
     }
@@ -120,14 +85,10 @@ public abstract class Creature {
         return;
     }
 
-    //You also get this distance function for free as well. Distance
-    //is defined in GridPoint.
     public int dist(Creature c){
         return point.dist(c.getGridPoint());
     }
 
-
-    //To String so you can output a creature to the plotter
     public String toString() {
         //output in col,row format or (x,y) format
         return ""+this.point.col+" "+this.point.row+" "+lab;

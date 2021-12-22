@@ -14,7 +14,6 @@ public class ZombieCat extends Cat {
     public void takeAction(){
         List<Creature> creatureList = city.getCreaturesAtLocation(getGridPoint());
         for (Creature c: creatureList){
-            // System.out.println(c);
             if(c.lab == LAB_BLUE || c.lab == LAB_YELLOW || c.lab == LAB_CYAN){
                 c.killedOrLived();
                 city.queueRmCreature(c);
@@ -38,7 +37,6 @@ public class ZombieCat extends Cat {
         Creature closestCreature = null;
         int closestValue = 40;
         for (Creature c: creatureList){
-            // System.out.println(this.dist(c));
             if ((this.dist(c) <= closestValue && c.lab == LAB_BLUE) || (this.dist(c) <= closestValue && c.lab == LAB_YELLOW) || (this.dist(c) <= closestValue && c.lab == LAB_CYAN)){
                 this.lab = LAB_BLACK;
                 closestValue = this.dist(c);
@@ -64,10 +62,8 @@ public class ZombieCat extends Cat {
             else if(destination.col < this.getCol()){
                 west = true;
             }
-            // System.out.println("North: " + north + " East: " + east + " South: " + south + " West: " + west);
 
             if (north && !east && !west){
-                // System.out.println("Accessed North");
                 changeToDirection(0);
             }
 
@@ -81,7 +77,6 @@ public class ZombieCat extends Cat {
             }
 
             if (east && !north && !south){
-                // System.out.println("Accessed East");
                 changeToDirection(1);
             }
 
@@ -95,12 +90,10 @@ public class ZombieCat extends Cat {
             }
 
             if (south && !east && !west){
-                // System.out.println("Accessed South");
                 changeToDirection(2);
             }
 
             if (south && west){
-                System.out.println("Accessed Southwest");
                 if (destination.row - this.getRow() > this.getCol() - destination.col){
                     changeToDirection(2);
                 }
@@ -110,12 +103,10 @@ public class ZombieCat extends Cat {
             }
 
             if (west && !north && !south){
-                // System.out.println("Accessed West");
                 changeToDirection(3);
             }
 
             if (west && north){
-                System.out.println("Accessed NorthWest");
                 if (this.getCol() - destination.col > this.getRow() - destination.row){
                     changeToDirection(3);
                 }

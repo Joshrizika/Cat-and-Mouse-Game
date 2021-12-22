@@ -48,7 +48,6 @@ public class Mouse extends Creature {
         city.removeFromHashmap(this);
         
         timeAlive++;
-        // System.out.println(timeAlive);
 
         int row = this.getRow();
         int col = this.getCol();

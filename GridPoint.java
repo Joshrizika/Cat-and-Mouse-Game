@@ -1,11 +1,5 @@
 public class GridPoint extends Object{
 
-    //-----------------
-    //You get this class for free. You can edit it as you see fit for
-    //your model, but do not change equals or hashcode
-    //------------------
-    
-    //publically accessible row and col for convenience
     public int row, col;
     
     public GridPoint(int row, int col){
@@ -14,7 +8,6 @@ public class GridPoint extends Object{
     }
 
 
-    //copy construtor
     public GridPoint(GridPoint other){
         this.row = other.row;
         this.col = other.col;
@@ -35,7 +28,6 @@ public class GridPoint extends Object{
         return this.row * 31 + this.col;
     }
 
-    //Free two-string method prints out in (x,y) - (col,row) to help you debug
     @Override
     public String toString(){
         return "("+this.col+","+this.row+")";

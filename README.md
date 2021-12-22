@@ -7,8 +7,7 @@ To compile the progam, use ```javac *.java```
 
 To run the program use this format
 
-
-```java Simulator Mice Cats ZombieCats rounds milliseconds| java -jar Plotter.jar```
+```java Simulator Mice Cats ZombieCats rounds seed | java -jar Plotter.jar milliseconds```
 
 Mice, Cats, and ZombieCats should be expressed as integers and representst the initial number of each creature.  
 
@@ -18,13 +17,24 @@ Milliseconds should be expressed as an integer value that represents the number 
 
 An example of what this code would look like would be
 
-```java Simulator 50 25 12 1000 100| java -jar Plotter.jar```
+```java Simulator 50 25 12 1000| java -jar Plotter.jar 100```
 
 This could also take a Debug add on that would show the round number in the center of the plotter and give the coordinates of each dot.  To use this, add the debug flag ```--DEBUG``` to the end of the command.  
 
+Another add on would be a random seed that would be expressed as an integer and would change the random variables so that different variations with the same starting values can be used. 
+
 This command would appear as
 
-```java Simulator 50 25 12 1000 100| java -jar Plotter.jar --DEBUG```
+```java Simulator 50 25 12 1000| java -jar Plotter.jar 100 --DEBUG```
+
+The last optional add on would be a random seed that would be expressed as an integer and would change the random variables so that different variations with the same starting values can be used. 
+
+All together this could look like the below command
+
+```java Simulator 50 25 12 1000 42| java -jar Plotter.jar 100 --DEBUG```
+
+
+
 
 ## UML Design
 
@@ -40,11 +50,11 @@ Mice, Cats, InfinityStone, and Thanos are all classes that inherit methods from 
 
 ### Mouse
 
-Mice are represented by blue dots.  They move at 1 block per round and they always move randomly, they breed after 20 rounds and die after 100.  A new mouse is added every 100 rounds.  
+Mice are represented by blue dots.  They move at 1 block per round and they always move randomly, they breed after 20 rounds and die after 100.  A new mouse is added every 20 rounds.  
 
 ### Cat
 
-Cats are represented by yellow dots, they move at 2 blocks per round and unless they are chasing a mouse, they move randomly.  They do not breed and they die 100 rounds after they eat their last mouse.  When they die they become a zombie cat.  When a cat is within 20 blocks (manhatten distance) of a mouse it changes to a cyan dot and moves in the direction of that mouse, it moves by approaching the mouse through the distance that it is farther away from (for instance if the mouse is 8 blocks north and 6 blocks west it will jump north until the north distance is closer than the west distance, then it will move west).  This is generally how all creatures chase in this program.  A new cat is added every 25 rounds.  
+Cats are represented by yellow dots, they move at 2 blocks per round and unless they are chasing a mouse, they move randomly.  They do not breed and they die 100 rounds after they eat their last mouse.  When they die they become a zombie cat.  When a cat is within 20 blocks (manhatten distance) of a mouse it changes to a cyan dot and moves in the direction of that mouse, it moves by approaching the mouse through the distance that it is farther away from (for instance if the mouse is 8 blocks north and 6 blocks west it will jump north until the north distance is closer than the west distance, then it will move west).  This is generally how all creatures chase in this program.  A new cat is added every 10 rounds.  
 
 ### Thanos
 
