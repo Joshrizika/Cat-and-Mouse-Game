@@ -1,9 +1,7 @@
 # Cat and Mouse Game
 
 
-## Compiling
-
-To compile the progam, use ```javac *.java```
+## Running the Program
 
 To run the program use this format
 
