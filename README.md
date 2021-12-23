@@ -3,11 +3,11 @@
 
 ## Running the Program
 
-To run the program use this format
+To run the program, use this format
 
 ```java Simulator Mice Cats ZombieCats rounds seed | java -jar Plotter.jar milliseconds```
 
-Mice, Cats, and ZombieCats should be expressed as integers and representst the initial number of each creature.  
+Mice, Cats, and ZombieCats should be expressed as integers and represents the initial number of each creature.  
 
 Rounds should be expressed as an integer that represents the number of rounds to iterate through before the program terminates.  
 
@@ -40,7 +40,7 @@ All together this could look like the below command
 
 ## Creature
 
-Creature is an abstract class that specific creatures are instances of.  There are methods in Creature that are used in these children classes.  because it is an abstract class it can have multiple inhertance which allows it to be used by multiple different creatures.  
+Creature is an abstract class that specific creatures are instances of.  There are methods in Creature that are used in these children classes.  because it is an abstract class it can have multiple inheritance which allows it to be used by multiple different creatures.  
 
 ## Mouse, Cat, InfinityStone, and Thanos OOP  
 
@@ -48,22 +48,22 @@ Mice, Cats, InfinityStone, and Thanos are all classes that inherit methods from 
 
 ### Mouse
 
-Mice are represented by blue dots.  They move at 1 block per round and they always move randomly, they breed after 20 rounds and die after 100.  A new mouse is added every 20 rounds.  
+Mice are represented by blue dots.  They move at 1 block per round, and they always move randomly, they breed after 20 rounds and die after 100.  A new mouse is added every 20 rounds.  
 
 ### Cat
 
-Cats are represented by yellow dots, they move at 2 blocks per round and unless they are chasing a mouse, they move randomly.  They do not breed and they die 100 rounds after they eat their last mouse.  When they die they become a zombie cat.  When a cat is within 20 blocks (manhatten distance) of a mouse it changes to a cyan dot and moves in the direction of that mouse, it moves by approaching the mouse through the distance that it is farther away from (for instance if the mouse is 8 blocks north and 6 blocks west it will jump north until the north distance is closer than the west distance, then it will move west).  This is generally how all creatures chase in this program.  A new cat is added every 10 rounds.  
+Cats are represented by yellow dots, they move at 2 blocks per round and unless they are chasing a mouse, they move randomly.  They do not breed, and they die 100 rounds after they eat their last mouse.  When they die they become a zombie cat.  When a cat is within 20 blocks (manhatten distance) of a mouse it changes to a cyan dot and moves in the direction of that mouse, it moves by approaching the mouse through the distance that it is farther away from (for instance if the mouse is 8 blocks north and 6 blocks west it will jump north until the north distance is closer than the west distance, then it will move west).  This is generally how all creatures chase in this program.  A new cat is added every 10 rounds.  
 
 ### Thanos
 
-Thanos is a creature inspired by the character Thanos and his actions in the Marvel Cinematic Universe.  In the movies, Thanos's planet was destroyed due to overpopulation so he vows to fix this problem for the whole universe by eliminating half of the creatures in the universe.  To do this, Thanos needs the 6 infinity stones that control different aspects of reality, once he has all 6 he snaps and half the creatures in the universe turn to dust.  In this program thanos does exactly that, there are 6 infinity stones scattered throughout the map and thanos tracks them down one by one at a speed of 1 block every 2 rounds.  Once he has all 6 infinity stones he moves to the center of the screen and snaps, eliminating half the creatures in the city (excluding himself).  Unfortunately, this takes about 600 rounds which is much longer thant the average lifspan of all the other creatures so there arent many creatures that die in the snap, but if you increase the lifespan of zombie cats to 700 then it works pretty well.  Thanos never moves randomly despite having code to.  Thanos also does not die.  
+Thanos is a creature inspired by the character Thanos and his actions in the Marvel Cinematic Universe.  In the movies, Thanos's planet was destroyed due to overpopulation, so he vows to fix this problem for the whole universe by eliminating half of the creatures in the universe.  To do this, Thanos needs the 6 infinity stones that control different aspects of reality, once he has all 6, he snaps and half the creatures in the universe turn to dust.  In this program Thanos does exactly that, there are 6 infinity stones scattered throughout the map and Thanos tracks them down one by one at a speed of 1 block every 2 rounds.  Once he has all 6 infinity stones he moves to the center of the screen and snaps, eliminating half the creatures in the city (excluding himself).  Unfortunately, this takes about 600 rounds which is much longer than the average lifespan of all the other creatures so there aren’t many creatures that die in the snap, but if you increase the lifespan of zombie cats to 700 then it works well.  Thanos never moves randomly despite having code to.  Thanos also does not die.  
 
 ### InfinityStone
 
-Infinity stones are added in pairs of 6, each being one of 3 colors pink, orange, and green.  They do not move, they do not eat, they only die when thanos catches them.  They are not actual creatures but this implementation of them was easy to use so it made sence to make them as such.  
+Infinity stones are added in pairs of 6, each being one of 3 colors pink, orange, and green.  They do not move, they do not eat, they only die when Thanos catches them.  They are not actual creatures but this implementation of them was easy to use so it made sense to make them as such.  
 
 ### ZombieCat
 
-ZombieCat is an instance of a Cat, it contains all the same methods in Creature, and in Cat, and it uses polymorphism to change some to do things such as target cats and mice instead of just cats, and take 3 steps per round instead of 2.  It is the only class that is extended from another instance of Creature.  
+ZombieCat is an instance of a Cat, it contains all the same methods in Creature, and in Cat, and it uses polymorphism to change some to do things such as target cats and mice instead of just cats and take 3 steps per round instead of 2.  It is the only class that is extended from another instance of Creature.  
 
-Zombie Cats are represented by red dots.  They move at 3 blocks per round and unless they are chasing a mouse or a cat they move randomly. They do not breed and they die after 200 rounds of not having eaten.  If they are within 40 blocks of a cat or a mouse then they turn black and chase that creature with the same chase function as used in cat.  if they eat a mouse then that mouse dies, if they eat a cat then it turns into a zombie cat.  
+Zombie Cats are represented by red dots.  They move at 3 blocks per round and unless they are chasing a mouse or a cat they move randomly. They do not breed, and they die after 200 rounds of not having eaten.  If they are within 40 blocks of a cat or a mouse, then they turn black and chase that creature with the same chase function as used in cat.  if they eat a mouse then that mouse dies, if they eat a cat then it turns into a zombie cat.  
